@@ -9,15 +9,53 @@
     crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Titillium+Web&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
+      <h1>
+        Code Journal
+      </h1>
   </header>
   <main>
-    <div data-view="edit-profile"></div>
+    <div class="form-container">
+        <div class="column-half">
+          <h2>
+            Edit Profile
+          </h2>
+          <img src="./images/placeholder-image-square.jpg" alt="default-image-placeholder">
+        </div>   
+      <div class="column-half form-input">
+        <form action="">
+          <label for="avatar-url">Avatar URL</label>
+          <div class="avatar-url">
+            <input type="text" class="form-input" id="avatar-url" required>
+          </div>
+          <label for="username">Username</label>
+          <div class="username-input">
+            <input type="name" class="form-input" id="username" required>
+          </div>
+          <label for="fullName">Full Name</label>
+          <div class="fullname-input">
+            <input type="name" class="form-input" id="fullName" required>
+          </div>
+          <label for="location">Location</label>
+          <div class="location-input">
+            <input type="text" class="form-input" id="location" required>
+          </div>
+          <label for="bio">Bio</label>
+          <div class="bio-input">
+            <textarea name="bio" id="bio" cols="30" rows="10" class="form-input" required></textarea>
+          </div>
+          <div class="save-button">
+            <input type="submit" value="Save">
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
