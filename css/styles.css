@@ -19,23 +19,27 @@ input {
 .form-container {
   display: flex;
   width: 100%;
+  justify-content: center;
 }
 
 .column-half {
   display: flex;
   width: 50%;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.col-1 {
+  justify-content: flex-end;
+}
+
+.col-2 {
+  justify-content: flex-start;
+}
+
+.default-img {
+  width: 50%;
 }
 
 .form-input {
-  margin: 1rem;
-
-  /* padding-top: 3.5rem; */
-}
-
-@media screen and (min-width: 667px) {
-  .form-container {
-    display: flex;
-    width: 50%;
-  }
+  width: 100%;
 }
