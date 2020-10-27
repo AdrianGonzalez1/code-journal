@@ -3,43 +3,55 @@ body {
 }
 
 header {
-  font-family: 'Montserrat', sans-serif;
-  background-color: rgb(245, 96, 96);
-  color: white;
-  text-shadow: black;
-  height: 100%;
   width: 100%;
-  padding: 1rem;
+  background-color: #f76a6e;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+  color: white;
+  margin: 0 auto;
+  padding: 22px 0;
+  font-size: 20px;
 }
 
 input {
-  width: 50%;
+  height: 45px;
 }
 
-.form-container {
-  display: flex;
+textarea,
+input {
   width: 100%;
-  justify-content: center;
-}
-
-.column-half {
-  display: flex;
-  width: 50%;
-  flex-wrap: wrap;
-}
-
-.col-1 {
-  justify-content: flex-end;
-}
-
-.col-2 {
-  justify-content: flex-start;
-}
-
-.default-img {
-  width: 50%;
+  border: 1px solid black;
 }
 
 .form-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: -15px;
+}
+
+img {
+  border: none;
   width: 100%;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 12px 0;
+  background-color: #f76a6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.save-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
 }
