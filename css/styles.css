@@ -55,3 +55,7 @@ button:hover {
   justify-content: flex-end;
   margin-top: 8px;
 }
+
+div[data-view="edit-profile"] {
+  display: none;
+}
