@@ -108,9 +108,11 @@ function viewSwap(currentView) {
 
 document.addEventListener('DOMContentLoaded', function () {
   var previousProfileJSON = localStorage.getItem('profile-local-storage');
-  previousProfileJSON = JSON.parse(previousProfileJSON);
-  data = previousProfileJSON;
 
+  if (previousProfileJSON !== null) {
+    previousProfileJSON = JSON.parse(previousProfileJSON);
+    data = previousProfileJSON;
+  }
   if (previousProfileJSON.profile.username === '') {
     viewSwap('edit-profile');
   } else {
