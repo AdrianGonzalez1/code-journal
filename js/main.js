@@ -1,12 +1,15 @@
+/* eslint-disable no-global-assign */
 /* eslint-disable no-unused-vars */
 var avatarUrlInput = document.querySelector('#avatar');
 var img = document.querySelector('img');
 var formElement = document.querySelector('form');
 var viewDiv = document.querySelectorAll('div[data-view]');
+
 avatarUrlInput.addEventListener('input', function (event) {
   img.setAttribute('src', event.target.value);
 });
 
+// submit function
 formElement.addEventListener('submit', function (event) {
   event.preventDefault();
   data.profile.avatarUrl = formElement.elements.avatarUrl.value;
@@ -92,12 +95,25 @@ function renderProfile(data) {
 function viewSwap(currentView) {
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
+    viewDiv[1].className = 'view';
     data.view = 'profile';
     viewDiv[1].innerHTML = '';
-    viewDiv[1].append(renderProfile());
+    viewDiv[1].appendChild(renderProfile(data));
   } else if (currentView === 'edit-profile') {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
     data.view = 'edit-profile';
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var previousProfileJSON = localStorage.getItem('profile-local-storage');
+  previousProfileJSON = JSON.parse(previousProfileJSON);
+  data = previousProfileJSON;
+
+  if (previousProfileJSON.profile.username === '') {
+    viewSwap('edit-profile');
+  } else {
+    viewSwap('profile');
+  }
+});
