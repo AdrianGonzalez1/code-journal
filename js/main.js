@@ -21,3 +21,7 @@ window.addEventListener('beforeunload', function () {
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('profile-local-storage', dataJSON);
 });
+
+// function renderProfile(data) {
+
+// }
