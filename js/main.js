@@ -3,7 +3,6 @@ var avatarUrlInput = document.querySelector('#avatar');
 var img = document.querySelector('img');
 var formElement = document.querySelector('form');
 var viewDiv = document.querySelectorAll('div[data-view]');
-
 avatarUrlInput.addEventListener('input', function (event) {
   img.setAttribute('src', event.target.value);
 });
@@ -89,12 +88,13 @@ function renderProfile(data) {
 
   return containerDiv;
 }
-
 function viewSwap(currentView) {
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
+    data.view = 'profile';
   } else if (currentView === 'edit-profile') {
     viewDiv[1].className = 'view hidden';
+    viewDiv[0].className = 'view';
+    data.view = 'edit-profile';
   }
-
 }
