@@ -93,6 +93,7 @@ function renderProfile(data) {
   return containerDiv;
 }
 function viewSwap(currentView) {
+
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
     viewDiv[1].className = 'view';
@@ -103,6 +104,12 @@ function viewSwap(currentView) {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
     data.view = 'edit-profile';
+    formElement.avatarUrl.value = data.profile.avatarUrl;
+    formElement.username.value = data.profile.username;
+    formElement.fullName.value = data.profile.fullName;
+    formElement.location.value = data.profile.location;
+    formElement.bio.value = data.profile.bio;
+    img.setAttribute('src', formElement.avatarUrl.value);
   }
 }
 
