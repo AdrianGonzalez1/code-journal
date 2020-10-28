@@ -2,6 +2,7 @@
 var avatarUrlInput = document.querySelector('#avatar');
 var img = document.querySelector('img');
 var formElement = document.querySelector('form');
+var viewDiv = document.querySelectorAll('div[data-view]');
 
 avatarUrlInput.addEventListener('input', function (event) {
   img.setAttribute('src', event.target.value);
@@ -87,4 +88,13 @@ function renderProfile(data) {
   containerDiv.appendChild(imgRow);
 
   return containerDiv;
+}
+
+function viewSwap(currentView) {
+  if (currentView === 'profile') {
+    viewDiv[0].className = 'view hidden';
+  } else if (currentView === 'edit-profile') {
+    viewDiv[1].className = 'view hidden';
+  }
+
 }
