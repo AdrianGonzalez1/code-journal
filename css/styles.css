@@ -13,6 +13,7 @@ h3 {
   margin: 0 auto;
   padding: 22px 0;
   font-size: 20px;
+  text-align: center;
 }
 
 input {
@@ -54,4 +55,14 @@ button:hover {
   display: flex;
   justify-content: flex-end;
   margin-top: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.icon-text {
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 20px;
 }
