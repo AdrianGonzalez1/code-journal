@@ -66,3 +66,21 @@ button:hover {
   margin-left: 1rem;
   font-size: 20px;
 }
+
+.edit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-button {
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  background-color: #f76a6e;
+  color: white;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.edit-button:hover {
+  color: none;
+}

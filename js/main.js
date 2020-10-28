@@ -27,6 +27,7 @@ window.addEventListener('beforeunload', function () {
   localStorage.setItem('profile-local-storage', dataJSON);
 });
 
+// dynamically creates and renders HTML elements for profile view
 function renderProfile(data) {
 
   // username DOM
@@ -48,6 +49,8 @@ function renderProfile(data) {
   var locationP = document.createElement('p');
   var bioDiv = document.createElement('div');
   var bioP = document.createElement('p');
+  var anchorDiv = document.createElement('div');
+  var anchorElement = document.createElement('a');
   // username DOM
   usernameRow.className = 'row';
   containerDiv.className = 'container';
@@ -70,6 +73,11 @@ function renderProfile(data) {
   bioDiv.className = 'icon';
   bioP.className = 'bio-text';
   bioP.textContent = data.profile.bio;
+  anchorDiv.className = 'icon edit-container';
+  anchorElement.className = 'edit-button';
+  anchorElement.setAttribute('href', '#');
+  anchorElement.setAttribute('data-view', 'edit-profile');
+  anchorElement.textContent = 'Edit Profile';
 
   // username DOM
   col1Div.appendChild(usernameH1);
@@ -87,11 +95,15 @@ function renderProfile(data) {
   iconCol.appendChild(iconDiv1);
   bioDiv.appendChild(bioP);
   iconCol.appendChild(bioDiv);
+  anchorDiv.appendChild(anchorElement);
+  iconCol.appendChild(anchorDiv);
   imgRow.appendChild(iconCol);
   containerDiv.appendChild(imgRow);
 
   return containerDiv;
 }
+
+// swaps user views
 function viewSwap(currentView) {
 
   if (currentView === 'profile') {
@@ -113,6 +125,7 @@ function viewSwap(currentView) {
   }
 }
 
+//
 document.addEventListener('DOMContentLoaded', function () {
   var previousProfileJSON = localStorage.getItem('profile-local-storage');
 
