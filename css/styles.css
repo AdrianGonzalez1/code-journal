@@ -60,13 +60,3 @@ button:hover {
 .hidden {
   display: none;
 }
-
-.icon-text {
-  display: inline-block;
-  margin-left: 1rem;
-  font-size: 20px;
-}
-
-.bio-text {
-  font-weight: bolder;
-}
