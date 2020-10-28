@@ -16,6 +16,7 @@ formElement.addEventListener('submit', function (event) {
   data.profile.bio = formElement.elements.bio.value;
   formElement.reset();
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  viewSwap('profile');
 });
 
 window.addEventListener('beforeunload', function () {
@@ -92,6 +93,8 @@ function viewSwap(currentView) {
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
     data.view = 'profile';
+    viewDiv[1].innerHTML = '';
+    viewDiv[1].append(renderProfile());
   } else if (currentView === 'edit-profile') {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
