@@ -56,7 +56,7 @@ button:hover {
   margin-top: 8px;
 }
 
-main[data-view="edit-profile"] {
+div[data-view="edit-profile"] {
   display: none;
 }
 
