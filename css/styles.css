@@ -53,7 +53,7 @@ button:hover {
 
 .save-button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: left;
   margin-top: 8px;
 }
 
@@ -78,9 +78,15 @@ button:hover {
   background-color: #f76a6e;
   color: white;
   border-radius: 5px;
-  justify-content: center;
 }
 
 .edit-button:hover {
   color: none;
+}
+
+.nav-profile {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
 }
