@@ -112,7 +112,7 @@ button:hover {
 .profile-button:active,
 .edit-button:active,
 .save-button:active,
-.entry-button :active {
+.entry-button:active {
   transform: translateY(0.25rem);
   color: none;
   border: none;

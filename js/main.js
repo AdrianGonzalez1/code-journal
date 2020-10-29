@@ -114,7 +114,8 @@ function viewSwap(currentView) {
     data.view = 'profile';
     viewDiv[1].innerHTML = '';
     viewDiv[1].appendChild(renderProfile(data));
-  } else if (currentView === 'edit-profile') {
+  }
+  if (currentView === 'edit-profile') {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
     data.view = 'edit-profile';
@@ -125,6 +126,14 @@ function viewSwap(currentView) {
     formElement.bio.value = data.profile.bio;
     img.setAttribute('src', data.profile.avatarUrl);
   }
+  // if (currentView === 'entries') {
+  //   viewDiv[0].className = 'view hidden';
+  //   viewDiv[1].className = 'view hidden';
+  //   viewDiv[2].className = 'view';
+  //   viewDiv[2].appendChild(renderProfile(data));
+  //   data.view = 'entries';
+  // }
+  data.view = currentView;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -148,5 +157,9 @@ document.addEventListener('click', function (event) {
     viewSwap('edit-profile');
   } else {
     viewSwap(event.target.getAttribute('data-view'));
+  }
+
+  if (event.target.getAttribute('data-view') === 'entries' || data.profile !== '') {
+    viewSwap('entries');
   }
 });
