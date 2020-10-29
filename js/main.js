@@ -27,6 +27,7 @@ window.addEventListener('beforeunload', function () {
   localStorage.setItem('profile-local-storage', dataJSON);
 });
 
+// dynamically creates and renders HTML elements for profile view
 function renderProfile(data) {
 
   // username DOM
@@ -48,6 +49,8 @@ function renderProfile(data) {
   var locationP = document.createElement('p');
   var bioDiv = document.createElement('div');
   var bioP = document.createElement('p');
+  var anchorDiv = document.createElement('div');
+  var anchorElement = document.createElement('a');
   // username DOM
   usernameRow.className = 'row';
   containerDiv.className = 'container';
@@ -70,6 +73,11 @@ function renderProfile(data) {
   bioDiv.className = 'icon';
   bioP.className = 'bio-text';
   bioP.textContent = data.profile.bio;
+  anchorDiv.className = 'icon edit-container';
+  anchorElement.className = 'edit-button';
+  anchorElement.setAttribute('href', '#');
+  anchorElement.setAttribute('data-view', 'edit-profile');
+  anchorElement.textContent = 'Edit Profile';
 
   // username DOM
   col1Div.appendChild(usernameH1);
@@ -87,12 +95,19 @@ function renderProfile(data) {
   iconCol.appendChild(iconDiv1);
   bioDiv.appendChild(bioP);
   iconCol.appendChild(bioDiv);
+  anchorDiv.appendChild(anchorElement);
+  iconCol.appendChild(anchorDiv);
   imgRow.appendChild(iconCol);
   containerDiv.appendChild(imgRow);
 
   return containerDiv;
 }
+
+// CAN YOU NOT HEAR ME????
+
+// swaps user views
 function viewSwap(currentView) {
+
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
     viewDiv[1].className = 'view';
@@ -103,19 +118,35 @@ function viewSwap(currentView) {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
     data.view = 'edit-profile';
+    formElement.avatarUrl.value = data.profile.avatarUrl;
+    formElement.username.value = data.profile.username;
+    formElement.fullName.value = data.profile.fullName;
+    formElement.location.value = data.profile.location;
+    formElement.bio.value = data.profile.bio;
+    img.setAttribute('src', data.profile.avatarUrl);
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   var previousProfileJSON = localStorage.getItem('profile-local-storage');
-
   if (previousProfileJSON !== null) {
-    previousProfileJSON = JSON.parse(previousProfileJSON);
-    data = previousProfileJSON;
+    data = JSON.parse(previousProfileJSON);
   }
-  if (previousProfileJSON.profile.username === '') {
+  if (data.profile.username === '') {
     viewSwap('edit-profile');
   } else {
     viewSwap('profile');
+  }
+});
+
+document.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+
+  if (data.profile.username === '' || event.target.getAttribute('data-view') === 'edit-profile') {
+    viewSwap('edit-profile');
+  } else {
+    viewSwap(event.target.getAttribute('data-view'));
   }
 });
