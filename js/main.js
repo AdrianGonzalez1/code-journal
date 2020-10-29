@@ -18,7 +18,7 @@ formElement.addEventListener('submit', function (event) {
   data.profile.location = formElement.elements.location.value;
   data.profile.bio = formElement.elements.bio.value;
   formElement.reset();
-  img.setAttribute('src', './images/placeholder-image-square.jpg');
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
   viewSwap('profile');
 });
 
@@ -129,12 +129,10 @@ function viewSwap(currentView) {
 
 document.addEventListener('DOMContentLoaded', function () {
   var previousProfileJSON = localStorage.getItem('profile-local-storage');
-
   if (previousProfileJSON !== null) {
-    previousProfileJSON = JSON.parse(previousProfileJSON);
-    data = previousProfileJSON;
+    data = JSON.parse(previousProfileJSON);
   }
-  if (previousProfileJSON.profile.username === '') {
+  if (data.profile.username === '') {
     viewSwap('edit-profile');
   } else {
     viewSwap('profile');
@@ -142,11 +140,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('click', function (event) {
-  if (event.target.getAttribute('data-view') === 'profile') {
-    if (data.profile.username !== '') {
-      viewSwap('profile');
-    } else if (data.profile.username === '' && event.target.tagName === 'A') {
-      viewSwap('edit-profile');
-    }
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+
+  if (data.profile.username === '' || event.target.getAttribute('data-view') === 'edit-profile') {
+    viewSwap('edit-profile');
+  } else {
+    viewSwap(event.target.getAttribute('data-view'));
   }
 });
