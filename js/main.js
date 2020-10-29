@@ -107,7 +107,6 @@ function renderProfile(data) {
 
 // swaps user views
 function viewSwap(currentView) {
-
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
     viewDiv[1].className = 'view';
@@ -126,13 +125,13 @@ function viewSwap(currentView) {
     formElement.bio.value = data.profile.bio;
     img.setAttribute('src', data.profile.avatarUrl);
   }
-  // if (currentView === 'entries') {
-  //   viewDiv[0].className = 'view hidden';
-  //   viewDiv[1].className = 'view hidden';
-  //   viewDiv[2].className = 'view';
-  //   viewDiv[2].appendChild(renderProfile(data));
-  //   data.view = 'entries';
-  // }
+  if (currentView === 'entries') {
+    viewDiv[0].className = 'view hidden';
+    viewDiv[1].className = 'view hidden';
+    viewDiv[2].className = 'view';
+    viewDiv[2].appendChild(renderProfile(data));
+    data.view = 'entries';
+  }
   data.view = currentView;
 }
 
@@ -161,5 +160,8 @@ document.addEventListener('click', function (event) {
 
   if (event.target.getAttribute('data-view') === 'entries' || data.profile !== '') {
     viewSwap('entries');
+  }
+  if (event.target.getAttribute('data-view') === 'create-entry' || data.profile !== '') {
+    viewSwap('create-entry');
   }
 });

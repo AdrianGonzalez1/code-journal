@@ -29,7 +29,7 @@
 
     <div data-view="edit-profile" class="view hidden">
       <div class="row">
-        <div class="column-full" >
+        <div class="column-full">
           <h1>Edit Profile</h1>
         </div>
       </div>
@@ -82,8 +82,42 @@
   </div>
 
   <div data-view="profile" class="view"></div>
+
    <div data-view="entries" class="view"></div>
-    <div data-view="create-entry" class="view"></div>
+
+    <div data-view="create-entry" class="view">
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
+        </div>
+      <form>
+        <div class="row">
+          <div class="column-half">
+            <img src="./images/placeholder-image-square.jpg" id="entryImage" alt="default-placeholder-img">
+          </div>
+          <div class="column-half">
+              <label for="imageUrl">Image URL</label>
+            <div class="input-entry">
+              <input required name="imageUrl" type="text" id="image-url">
+            </div>
+              <label for="imageUrl">Title</label>
+            <div class="input-entry">
+              <input required name="entryTitle" type="text" id="entry-title">
+            </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <textarea required rows="5" name="notes" id="notes"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+     
+    </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
