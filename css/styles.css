@@ -81,10 +81,6 @@ button:hover {
   border-radius: 5px;
 }
 
-.edit-button:hover {
-  color: none;
-}
-
 .profile-container {
   padding-bottom: 1rem;
 }
@@ -99,4 +95,17 @@ button:hover {
   align-items: center;
   border-radius: 2px;
   border-bottom: 1.5px white solid;
+}
+
+.profile-button:active,
+.edit-button:active,
+.save-button:active {
+  transform: translateY(0.25rem);
+}
+
+.edit-button:hover,
+.profile-button:active,
+.save-button:active {
+  color: none;
+  border: none;
 }

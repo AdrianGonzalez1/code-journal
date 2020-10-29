@@ -103,6 +103,8 @@ function renderProfile(data) {
   return containerDiv;
 }
 
+// CAN YOU NOT HEAR ME????
+
 // swaps user views
 function viewSwap(currentView) {
 
@@ -146,5 +148,13 @@ document.addEventListener('click', function (event) {
   if (event.target.tagName === 'A') {
     viewSwap('edit-profile');
   }
-
+  if (event.target.getAttribute('data-view') === 'profile') {
+    // if they do have a username swap to view profile
+    // if they do not have a username swap to edit-profile
+    if (data.profile.username !== '') {
+      viewSwap('profile');
+    } else if (data.profile.username === '') {
+      viewSwap('edit-profile');
+    }
+  }
 });
