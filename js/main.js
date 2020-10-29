@@ -125,7 +125,6 @@ function viewSwap(currentView) {
   }
 }
 
-//
 document.addEventListener('DOMContentLoaded', function () {
   var previousProfileJSON = localStorage.getItem('profile-local-storage');
 
@@ -138,4 +137,14 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwap('profile');
   }
+});
+
+document.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+  if (event.target.tagName === 'A') {
+    viewSwap('edit-profile');
+  }
+
 });
