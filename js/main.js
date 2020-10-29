@@ -18,7 +18,7 @@ formElement.addEventListener('submit', function (event) {
   data.profile.location = formElement.elements.location.value;
   data.profile.bio = formElement.elements.bio.value;
   formElement.reset();
-  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  img.setAttribute('src', './images/placeholder-image-square.jpg');
   viewSwap('profile');
 });
 
@@ -123,7 +123,7 @@ function viewSwap(currentView) {
     formElement.fullName.value = data.profile.fullName;
     formElement.location.value = data.profile.location;
     formElement.bio.value = data.profile.bio;
-    img.setAttribute('src', formElement.avatarUrl.value);
+    img.setAttribute('src', data.profile.avatarUrl);
   }
 }
 
@@ -142,18 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('click', function (event) {
-  if (event.target.tagName !== 'A') {
-    return;
-  }
-  if (event.target.tagName === 'A') {
-    viewSwap('edit-profile');
-  }
   if (event.target.getAttribute('data-view') === 'profile') {
-    // if they do have a username swap to view profile
-    // if they do not have a username swap to edit-profile
     if (data.profile.username !== '') {
       viewSwap('profile');
-    } else if (data.profile.username === '') {
+    } else if (data.profile.username === '' && event.target.tagName === 'A') {
       viewSwap('edit-profile');
     }
   }
