@@ -109,10 +109,27 @@ button:hover {
   border-bottom: 1.5px white solid;
 }
 
+.entries-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.entries-button {
+  padding: 10px 20px;
+  margin: 12px 0;
+  background-color: #f76a6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 .profile-button:active,
 .edit-button:active,
 .save-button:active,
-.entry-button:active {
+.entry-button:active,
+.entries-button:active {
   transform: translateY(0.25rem);
   color: none;
   border: none;

@@ -4,6 +4,8 @@ var avatarUrlInput = document.querySelector('#avatar');
 var img = document.querySelector('img');
 var formElement = document.querySelector('form');
 var viewDiv = document.querySelectorAll('div[data-view]');
+var photoUrl = document.querySelector('#image-url');
+var entryImg = document.querySelector('#entryImage');
 
 avatarUrlInput.addEventListener('input', function (event) {
   img.setAttribute('src', event.target.value);
@@ -110,6 +112,9 @@ function viewSwap(currentView) {
   if (currentView === 'profile') {
     viewDiv[0].className = 'view hidden';
     viewDiv[1].className = 'view';
+    viewDiv[2].className = 'view hidden';
+    viewDiv[3].className = 'view hidden';
+
     data.view = 'profile';
     viewDiv[1].innerHTML = '';
     viewDiv[1].appendChild(renderProfile(data));
@@ -117,6 +122,7 @@ function viewSwap(currentView) {
   if (currentView === 'edit-profile') {
     viewDiv[1].className = 'view hidden';
     viewDiv[0].className = 'view';
+    viewDiv[3].className = 'view hidden';
     data.view = 'edit-profile';
     formElement.avatarUrl.value = data.profile.avatarUrl;
     formElement.username.value = data.profile.username;
@@ -129,10 +135,16 @@ function viewSwap(currentView) {
     viewDiv[0].className = 'view hidden';
     viewDiv[1].className = 'view hidden';
     viewDiv[2].className = 'view';
-    viewDiv[2].appendChild(renderProfile(data));
+    viewDiv[3].className = 'view hidden';
     data.view = 'entries';
   }
-  data.view = currentView;
+  if (currentView === 'create-entry') {
+    viewDiv[0].className = 'view hidden';
+    viewDiv[1].className = 'view hidden';
+    viewDiv[2].className = 'view hidden';
+    viewDiv[3].className = 'view';
+    data.view = 'create-entry';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -157,11 +169,8 @@ document.addEventListener('click', function (event) {
   } else {
     viewSwap(event.target.getAttribute('data-view'));
   }
+});
 
-  if (event.target.getAttribute('data-view') === 'entries' || data.profile !== '') {
-    viewSwap('entries');
-  }
-  if (event.target.getAttribute('data-view') === 'create-entry' || data.profile !== '') {
-    viewSwap('create-entry');
-  }
+photoUrl.addEventListener('input', function () {
+  entryImg.setAttribute('src', event.target.value);
 });

@@ -83,8 +83,18 @@
 
   <div data-view="profile" class="view"></div>
 
-   <div data-view="entries" class="view"></div>
-
+   <div data-view="entries" class="view">
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <div class="entries-container">
+            <h1>Entries</h1>
+            <a class="entries-button" href="#" data-view="create-entry">New</a>      
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
     <div data-view="create-entry" class="view">
       <div class="container">
         <div class="row">
@@ -114,9 +124,13 @@
               <textarea required rows="5" name="notes" id="notes"></textarea>
             </div>
           </div>
+          <div class="row">
+            <div class="column-full save-button">
+              <button type="submit" id="entrySave">Save</button>
+            </div>
+          </div>
         </form>
       </div>
-     
     </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
