@@ -6,6 +6,7 @@ var formElement = document.querySelector('form');
 var viewDiv = document.querySelectorAll('div[data-view]');
 var photoUrl = document.querySelector('#image-url');
 var entryImg = document.querySelector('#entryImage');
+var entriesForm = document.querySelector('.create-entries');
 
 avatarUrlInput.addEventListener('input', function (event) {
   img.setAttribute('src', event.target.value);
@@ -105,8 +106,6 @@ function renderProfile(data) {
   return containerDiv;
 }
 
-// CAN YOU NOT HEAR ME????
-
 // swaps user views
 function viewSwap(currentView) {
   if (currentView === 'profile') {
@@ -169,8 +168,23 @@ document.addEventListener('click', function (event) {
   } else {
     viewSwap(event.target.getAttribute('data-view'));
   }
+
 });
 
 photoUrl.addEventListener('input', function () {
   entryImg.setAttribute('src', event.target.value);
+});
+
+entriesForm.addEventListener('submit', function () {
+  event.preventDefault();
+  var entriesObj = {};
+
+  entriesObj.url = entriesForm.elements.photoUrl;
+  entriesObj.title = entriesForm.elements.title;
+  entriesObj.notes = entriesForm.elements.notes;
+  data.entries.push(entriesObj);
+
+  entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
+  entriesForm.reset();
+  viewSwap('entries');
 });
