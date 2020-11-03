@@ -177,14 +177,13 @@ photoUrl.addEventListener('input', function () {
 
 entriesForm.addEventListener('submit', function () {
   event.preventDefault();
-  var entriesObj = {};
 
-  entriesObj.url = entriesForm.elements.photoUrl;
-  entriesObj.title = entriesForm.elements.title;
-  entriesObj.notes = entriesForm.elements.notes;
-  data.entries.push(entriesObj);
-
-  entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
+  data.entries.push({
+    imageUrl: entriesForm.elements.imageUrl.value,
+    title: entriesForm.elements.title.value,
+    notes: entriesForm.elements.notes.value
+  });
   entriesForm.reset();
+  entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
   viewSwap('entries');
 });
